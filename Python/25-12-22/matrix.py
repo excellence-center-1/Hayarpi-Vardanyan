@@ -48,9 +48,22 @@ class Matrix:
     for i in res:
       print(res)
 
+  def mult(self):
+    self.matrix
+    self.matrix1
+    result=[]
+    print("Mult matrix: ")
+    result = [[0 for row in range(len(self.matrix))] for col in range(len(self.matrix1[0]))]
+    for i in range(len(self.matrix)):
+        for j in range(len(self.matrix1[0])):
+            for k in range(len(self.matrix1)):
+                result[i][j] += self.matrix[i][k]*self.matrix1[k][j]
+    return result
+
 a = Matrix(2, 2)
 a.input_matrix()
 a.print_matrix()
 a.print_transposed_matrix()
-a.add()
+#a.add()
 #a.substract()
+a.mult()
