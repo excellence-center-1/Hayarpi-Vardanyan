@@ -1,1 +1,47 @@
+EX1
+CREATE OR REPLACE FUNCTION customer(customer_id integer)
+ RETURNS TABLE(customername varchar, email varchar, phone varchar, money  numeric) AS $$
+ BEGIN
+   SELECT c.customername, c.email, c.phone
+   INTO customername, email, phone
+   FROM customer c
+   WHERE c.customerid = customer_id;
+   RETURN NEXT;
+ END;
+ $$ LANGUAGE plpgsql;
 
+
+select * from customer(1);
+
+
+EX2
+
+CREATE OR REPLACE FUNCTION product_info(product_id integer)
+ RETURNS TABLE(productname varchar, totalRevenue varchar) AS $$
+ BEGIN
+   SELECT p.productname,p.totalRevenue
+   INTO productname,totalRevenue
+   FROM product p
+   WHERE p.productid = product_id;
+   RETURN NEXT;
+ END;
+ $$ LANGUAGE plpgsql;
+
+select product_info(2);
+
+Ex3
+
+CREATE OR REPLACE FUNCTION get_revenue(start_date date, end_date date)
+ RETURNS numeric AS $$
+ DECLARE
+   total_revenue numeric;
+ BEGIN
+   SELECT SUM(CAST(o.ordermoney AS numeric))
+   INTO total_revenue
+   FROM Table_Order o
+   WHERE o.orderDate >= start_date AND o.orderDate <= end_date;
+   RETURN total_revenue;
+ END;
+ $$ LANGUAGE plpgsql;
+
+select get_revenue('2023-01-12','2023-02-12');
