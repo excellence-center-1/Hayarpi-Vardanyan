@@ -1,0 +1,111 @@
+
+.container {
+    background-color: #ffffff
+}
+body {
+  background: linear-gradient(to bottom, #3b5998, #fff);
+  
+}
+.facebook-blue {
+  color: #1877f2;
+  font-family: Arial, sans-serif;
+		font-weight: bold;
+
+}
+
+.padding {
+    margin-left: 200px
+}
+
+.fa-thumbs-up{
+  color: blue;
+}
+
+.col-md-7{
+  text-align: center;
+  margin: auto;
+}
+
+.card-img-top{
+  height:300px;
+}
+
+.card-body {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1.25rem
+}
+
+.pro-img {
+  margin-top: -80px;
+  margin-bottom: 20px
+}
+
+.little-profile .pro-img img {
+  width: 256px;
+  height: 256px;
+  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 100%
+}
+
+#m-td {
+  padding-right: 20px;
+  }
+  
+  #m-td span {
+  position: relative;
+  cursor: pointer;
+  }
+  
+#m-td span.m-active:before {
+  content: "5";
+  position: absolute;
+  top: -8px;
+  right: 0px;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 4px 3px 4px;
+  background-color: #1f5fd4;
+  border-radius: 3px;
+  line-height: 1;
+}
+
+.td {
+  display: table-cell;
+  vertical-align: middle;
+  }
+
+#p-tab-m {
+  width: 1px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+#p-tab-m i {
+  margin-right: -4px;
+}
+.image-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+}
+
+.image {
+  border-radius: 5px;
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+.items {
+  display: flex;
+  align-items: center;
+}
+.item {
+  margin-right: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #4b4f56;
+  cursor: pointer;
+}
