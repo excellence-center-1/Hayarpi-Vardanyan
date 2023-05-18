@@ -7,6 +7,7 @@ const Rectangle = class Rectangle {
   // Display the area and perimeter
   get getArea() {
     return this.height * this.width;
+    
   }
   get getPerimeter(){
     return 2*this.height+2*this.width;
@@ -17,7 +18,7 @@ const Rectangle = class Rectangle {
        if(newHeight>=0){
          this.height = newHeight;
        } else {
-           console.log('Invalid width  value. Width must be a positive number. ');
+           console.log('Invalid height  value. Width must be a positive number. ');
        }
    }
      set Width(newWidth){
@@ -42,5 +43,5 @@ console.log('Updated Perimeter:', rectangle.getPerimeter);
 // Try setting invalid values
 rectangle.width = -2;
 rectangle.height = 0;
-console.log('Area:' , rectangle.getArea);
-console.log('Perimeter:', rectangle.getPerimeter); 
+//console.log('Area:' , rectangle.getArea);
+//console.log('Perimeter:', rectangle.getPerimeter); 
