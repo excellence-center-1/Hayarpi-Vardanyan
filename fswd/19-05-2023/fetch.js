@@ -15,13 +15,12 @@ function fetchData(url) {
 
 async function fetchDataAsync(url, params) {
   try {
-    const urlWithParams = new URL(url);
-    urlWithParams.searchParams.append('userId', params);
-    const data = await fetchData(urlWithParams);
+    const urlParams = new URL(url);
+    urlParams.searchParams.append('userId', params);
+    const data = await fetchData(urlParams);
     console.log('Data:', data);
   } catch (error) {
     console.error('Error:', error);
   }
 }
-
 fetchDataAsync('https://jsonplaceholder.typicode.com/posts', '10');
