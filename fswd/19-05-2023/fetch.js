@@ -5,7 +5,7 @@ function fetchData(url) {
         if (response.ok) {
           return response.json();
         } else {
-          throw new Error('Failed to fetch data from the API');
+          throw new Error('ERROR');
         }
       })
       .then(data => resolve(data))
