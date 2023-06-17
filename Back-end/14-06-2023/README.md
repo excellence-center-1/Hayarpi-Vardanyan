@@ -5,8 +5,8 @@
 
  
  
-** POST API **  -  curl -X POST 'http://localhost:3000/add-user'
+**POST API**  -  curl -X POST 'http://localhost:3000/add-user'
 
-** DELETE API **  -   curl -X DELETE 'http://localhost:3001/deleteUser/4'
+**DELETE API**  -   curl -X DELETE 'http://localhost:3001/deleteUser/4'
 
 **PUT API**    -    curl -X PUT -d '{"name":"Mahesh", "password":"newpassword", "profession":"updated profession"}' -H "Content-Type: application/json" http://localhost:3001/updateUserData/1
