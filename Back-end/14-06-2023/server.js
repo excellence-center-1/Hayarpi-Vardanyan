@@ -7,6 +7,13 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.get('/listUsers', (req, res) => {
+  fs.readFile(__dirname + '/users.json', 'utf8', (err, data) => {
+    console.log(data);
+    res.end(data);
+  });
+});
+
 app.post('/addUser', (req, res) => {
   const userData = {
     name: 'name',
