@@ -1,77 +1,98 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const fs = require('fs');
 
-const app = express();
 const port = 3001;
-const bodyParser = require('body-parser');
+const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-app.use(express.json());
-app.use(bodyParser.json()); 
-
-app.get('/listUsers', (req, res) => {
-  fs.readFile(__dirname + '/users.json', 'utf8', (err, data) => {
-    console.log(data);
-    res.end(data);
-  });
-});
-
-app.post('/add', (req, res) => {
-  const newUser = {
-    user4: {
-      name: 'name',
-      password: 'password4',
-      profession: 'teacher',
-      id: 4,
-    },
+app.post('/addUser', (req, res) => {
+  const userData = {
+    name: 'name',
+    password: 'password4',
+    profession: 'teacher',
+    id: 4,
   };
-  fs.readFile(__dirname + '/users.json', 'utf8', (err, data) => {
-    const users = JSON.parse(data);
-    
-    users.push(newUser);
 
-    fs.writeFile(__dirname + '/users.json',JSON.stringify(users),'utf8',(err) => {
+  fs.readFile('users.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: 'Failed to read user data' });
+    }
+
+    const users = JSON.parse(data);
+    users.user4 = userData;
+
+    fs.writeFile('users.json', JSON.stringify(users, null, 2), (err) => {
       if (err) {
         console.error(err);
-        res.status(500).send('Error writing to users.json');
-      } else {
-        res.send(users);
+        return res.status(500).json({ error: 'Failed to add user data' });
       }
+
+      res.status(200).json({ message: 'User data added successfully' });
     });
   });
 });
 
-
-
-/*app.delete('/listUsers/:id', (req, res) => {
+app.delete('/deleteUser/:id', (req, res) => {
   const userId = req.params.id;
-  fs.readFile(__dirname + '/users.json', 'utf8', (err, data) => {
+
+  fs.readFile('users.json', 'utf8', (err, data) => {
     if (err) {
       console.error(err);
-      res.status(500).send('Error reading users.json');
+      return res.status(500).json({ error: 'Failed to read user data' });
+    }
+
+    let users = JSON.parse(data);
+    if (users.hasOwnProperty(`user${userId}`)) {
+      const removedUser = users[`user${userId}`];
+      delete users[`user${userId}`];
+
+      fs.writeFile('users.json', JSON.stringify(users, null, 2), (err) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).json({ error: 'Failed to delete user data' });
+        }
+
+        res.status(200).json(removedUser);
+      });
     } else {
-      let users = JSON.parse(data);
-      if (users.hasOwnProperty(userId)) {
-        delete users[userId];
-        fs.writeFile(
-          __dirname + '/users.json',
-          JSON.stringify(users),
-          'utf8',
-          (err) => {
-            if (err) {
-              console.error(err);
-              res.status(500).send('Error writing to users.json');
-            } else {
-              res.send(users);
-            }
-          }
-        );
-      } else {
-        res.status(404).send('User not found');
-      }
+      res.status(404).json({ error: 'User not found' });
     }
   });
-});*/
+});
+
+app.put('/updateUserData/:id', (req, res) => {
+  const userId = req.params.id;
+  const updatedUser = req.body;
+
+  fs.readFile('users.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: 'Failed to read user data' });
+    }
+
+    let users = JSON.parse(data);
+    if (users.hasOwnProperty(`user${userId}`)) {
+      users[`user${userId}`] = updatedUser;
+
+      fs.writeFile('users.json', JSON.stringify(users, null, 2), (err) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).json({ error: 'Failed to update user data' });
+        }
+
+        res.status(200).json(updatedUser);
+      });
+    } else {
+      res.status(404).json({ error: 'User not found' });
+    }
+  });
+});
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Server is running on port ${port}`);
 });
+
+
