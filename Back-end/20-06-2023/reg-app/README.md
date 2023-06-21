@@ -10,7 +10,7 @@ psql -U reg_app -h localhost -d registration
 
 CREATE TABLES users (id SERIAL PRIMARY KEY,username VARCHAR(20),password VARCHAR(20),day VARCHAR(2),month VARCHAR(10), year VARCHAR(4),gender VARCHAR(10)); 
 
-**CLINET**
+**CLIENT**
 npm start
 
 **SERVER**
