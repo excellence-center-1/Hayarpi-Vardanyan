@@ -2,17 +2,17 @@ const express = require('express');
 const readline = require('readline');
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 
 const port = 3001;
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
 app.use('/addUser', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-const rl = readline.createInterface({
+/*const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
@@ -58,7 +58,7 @@ rl.question('Enter your name: ', (name) => {
 
 rl.on('close', () => {
   console.log('User input completed');
-});
+});*/
 
 
 
