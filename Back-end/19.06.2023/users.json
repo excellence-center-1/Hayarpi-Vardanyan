@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "user1": {
     "name": "Mahesh",
     "password": "newpassword",
@@ -35,3 +36,26 @@
     "id": 6
   }
 }
+=======
+    "user1" : {
+       "name" : "mahesh",
+       "password" : "password1",
+       "profession" : "teacher",
+       "id": 1
+    },
+    
+    "user2" : {
+       "name" : "suresh",
+       "password" : "password2",
+       "profession" : "librarian",
+       "id": 2
+    },
+    
+    "user3" : {
+       "name" : "ramesh",
+       "password" : "password3",
+       "profession" : "clerk",
+       "id": 3
+    }
+ }
+>>>>>>> beef7ff3a4bc858d2f79e606d9990122c160ef42
