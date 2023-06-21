@@ -1,0 +1,37 @@
+{
+  "user1": {
+    "name": "Mahesh",
+    "password": "newpassword",
+    "profession": "updated profession"
+  },
+  "user2": {
+    "id": 2,
+    "name": "suresh",
+    "password": "password2",
+    "profession": "librarian"
+  },
+  "user3": {
+    "id": 3,
+    "name": "ramesh",
+    "password": "password3",
+    "profession": "clerk"
+  },
+  "user4": {
+    "name": "name",
+    "password": "ckdld",
+    "profession": "jckdnsdkcj",
+    "id": 4
+  },
+  "user5": {
+    "name": "Name1",
+    "password": "123",
+    "profession": "teacher",
+    "id": 5
+  },
+  "user6": {
+    "name": "name6",
+    "password": "password6",
+    "profession": "teacher",
+    "id": 6
+  }
+}
