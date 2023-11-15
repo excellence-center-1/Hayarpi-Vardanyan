@@ -1,0 +1,45 @@
+version: "3"
+services:
+    frontend:
+        image: client
+        ports:
+          - "3000:3000"
+        container_name: client
+        build:
+            context: ./client
+            dockerfile: Dockerfile
+    backend:
+        image: server
+        ports:
+          - "5000:5000"
+        container_name: server
+        build:
+            context: ./server
+            dockerfile: Dockerfile
+
+
+# #docker-compose.yaml
+# version: '3.0'
+# services:
+#   client:
+#     container_name: client
+#     build:
+#       context: ./client
+#       dockerfile: Dockerfile
+#     restart: always
+#     ports:
+#       - 3000:3000
+#     # depends_on:
+#     #   - server
+#     command: "npm start"
+#   server:
+#     container_name: server
+#     build:
+#       context: ./server
+#       dockerfile: Dockerfile
+#       # - /app/node_modules
+#     restart: always
+#     ports:
+#       - 5000:5000
+#     command: npm run start:dev
+
